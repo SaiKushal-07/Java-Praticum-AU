@@ -1,80 +1,50 @@
+import java.util.Scanner;
+
 interface SmartDevice {
-    void turnOn();
-    void turnOff();
+    void control(String state);
 }
 
 class SmartFan implements SmartDevice {
-    private int speed;
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    @Override
-    public void turnOn() {
-        System.out.println("Smart Fan is turned ON.");
-    }
-
-    @Override
-    public void turnOff() {
-        System.out.println("Smart Fan is turned OFF.");
+    public void control(String state) {
+        System.out.println("Smart Fan is turned " + state);
     }
 }
 
 class SmartLight implements SmartDevice {
-    private int brightness;
-
-    public void setBrightness(int level) {
-        this.brightness = level;
-    }
-
-    @Override
-    public void turnOn() {
-        System.out.println("Smart Light is turned ON.");
-    }
-
-    @Override
-    public void turnOff() {
-        System.out.println("Smart Light is turned OFF.");
+    public void control(String state) {
+        System.out.println("Smart Light is turned " + state);
     }
 }
 
 class SmartAC implements SmartDevice {
-    private int temperature;
-
-    public void setTemperature(int temp) {
-        this.temperature = temp;
-    }
-
-    @Override
-    public void turnOn() {
-        System.out.println("Smart AC is turned ON.");
-    }
-
-    @Override
-    public void turnOff() {
-        System.out.println("Smart AC is turned OFF.");
+    public void control(String state) {
+        System.out.println("Smart AC is turned " + state);
     }
 }
 
 public class SmartHomeDemo {
     public static void main(String[] args) {
-        SmartDevice device;
-
-        device = new SmartFan();
-        device.turnOn();
-        device.turnOff();
-
-        System.out.println();
-
-        device = new SmartLight();
-        device.turnOn();
-        device.turnOff();
-
-        System.out.println();
-
-        device = new SmartAC();
-        device.turnOn();
-        device.turnOff();
+        Scanner sc = new Scanner(System.in);
+        if (sc.hasNextInt()) {
+            int n = sc.nextInt();
+            for (int i = 0; i < n; i++) {
+                String device = sc.next();
+                String state = sc.next();
+                SmartDevice d = null;
+                
+                if (device.equals("Fan")) {
+                    d = new SmartFan();
+                } else if (device.equals("Light")) {
+                    d = new SmartLight();
+                } else if (device.equals("AC")) {
+                    d = new SmartAC();
+                }
+                
+                if (d != null) {
+                    d.control(state);
+                }
+            }
+        }
+        sc.close();
     }
 }

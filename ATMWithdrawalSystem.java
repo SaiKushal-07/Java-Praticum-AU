@@ -62,7 +62,6 @@ public class ATMWithdrawalSystem {
             System.out.println("Transaction failed.");
             System.out.println("Available Balance: " + account.accountBalance);
         }
-
         sc.close();
     }
 }

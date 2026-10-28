@@ -1,0 +1,2 @@
+javac MultithreadingDemo.java
+java MultithreadingDemo

@@ -22,7 +22,7 @@ class Account {
     void withdraw(double amount) throws InsufficientBalanceException {
         if (amount > accountBalance) {
             throw new InsufficientBalanceException(
-                "Insufficient balance! Withdrawal cannot be processed."
+                "Insufficient balance! Withdrawal cannot be processed"
             );
         } else {
             accountBalance = accountBalance - amount;

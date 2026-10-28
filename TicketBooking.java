@@ -28,7 +28,7 @@ class BookingThread extends Thread {
 
 class BookingRunnable implements Runnable {
     TicketBooking booking;
-
+    
     public BookingRunnable(TicketBooking booking) {
         this.booking = booking;
     }
